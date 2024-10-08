@@ -1,118 +1,45 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useEffect, useState } from 'react';
+import { Alert, AppState, PermissionsAndroid, Platform, Image, Text } from 'react-native';
+import SmsListener from 'react-native-android-sms-listener';
+import BackgroundService from 'react-native-background-actions';
+import PushNotification from 'react-native-push-notification';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomePage from './HomePage';
+import ProfilePage from './ProfilePage';
+import RecordsPage from './RecordsPage';
+import SignUpScreen from './SignUpScreen';
+import LoginScreen from './LoginScreen';
+import RecordDetail from './RecordDetail';
+import AddRecord from './AddRecord';
+import DuePage from './DuePage';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+const Stack = createStackNavigator();
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen
+          name="Home"
+          component={HomePage}
+          options={{
+            headerStyle: { backgroundColor: '#2980b9' },
+            headerTintColor: '#fff',
+            headerTitleStyle: { fontWeight: 'bold' },
+          }}
+        />
+
+        <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="AddRecord" component={AddRecord} options={{headerStyle: { backgroundColor: '#2980b9'},headerTintColor: '#fff',headerTitleStyle: { fontWeight: 'bold' },}}/>
+        <Stack.Screen name="Profile" component={ProfilePage} options={{headerStyle: { backgroundColor: '#2980b9'},headerTintColor: '#fff',headerTitleStyle: { fontWeight: 'bold' },}}/>
+        <Stack.Screen name="Records" component={RecordsPage} options={{headerStyle: { backgroundColor: '#2980b9'},headerTintColor: '#fff',headerTitleStyle: { fontWeight: 'bold' },}}/>
+        <Stack.Screen name="RecordDetail" component={RecordDetail} options={{headerStyle: { backgroundColor: '#2980b9'},headerTintColor: '#fff',headerTitleStyle: { fontWeight: 'bold' },}}/>
+        <Stack.Screen name="Reminder" component={DuePage} options={{headerStyle: { backgroundColor: '#2980b9'},headerTintColor: '#fff',headerTitleStyle: { fontWeight: 'bold' },}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+};
 
 export default App;

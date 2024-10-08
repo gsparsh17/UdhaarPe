@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "601870181907",
+    "project_id": "udhaarapp-a574d",
+    "storage_bucket": "udhaarapp-a574d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601870181907:android:845e456113e6eda547c1e6",
+        "android_client_info": {
+          "package_name": "com.smslistenerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601870181907-5i6f82r4j0f9nott968bon1fadgp8v0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdKcb2Ux-fGVbIBfLpvd9jETOH-sJwsRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601870181907-5i6f82r4j0f9nott968bon1fadgp8v0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
